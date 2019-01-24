@@ -21,4 +21,16 @@ public class AppSizeUtilTest {
             }
         });
     }
+
+    @Test
+    public void getAppSizeDataOtherPackage() {
+        Context appContext = InstrumentationRegistry.getTargetContext();
+        AppSizeUtil.getAppSizeData(appContext, "com.kakao.talk", new AppSizeManager.AppSizeDataListener() {
+            @Override
+            public void onGetAppSizeDataCompleted(AppSizeData data) {
+                System.out.println("totalSize : " + data.getTotalSize());
+                assertNotNull(data);
+            }
+        });
+    }
 }
